@@ -1,0 +1,19 @@
+{
+  "name": "trip_planner",
+  "version": "1.0.0",
+  "description": "Using Webpack to do stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholasGalarza/Trip-Planner.git"
+  },
+  "author": "Nicholas Galarza & Andrey Ivanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicholasGalarza/Trip-Planner/issues"
+  },
+  "homepage": "https://github.com/NicholasGalarza/Trip-Planner#readme"
+}

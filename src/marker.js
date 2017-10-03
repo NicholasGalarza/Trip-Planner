@@ -7,18 +7,19 @@ const iconURLs = {
 }
 
 const buildMarker = (type, coords) => {
+  console.log(type, coords);
+  // const markerDomEl = document.createElement("div"); // Create a new, detached DIV
+// markerDomEl.style.width = "32px";
+// markerDomEl.style.height = "39px";
+ //markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
+//
+// new mapbox.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
   const markerDomEl = document.createElement("div");
   markerDomEl.style.width = "32px";
   markerDomEl.style.height = "39px";
-  markerDomEl.style.backgroundImage = iconURLs[type];
-  new mapboxgl.Marker(markerDomEl).setLngLat(coords).addTo(map);
+  markerDomEl.style.backgroundImage = `url(${iconURLs[type]})`;
+  console.log(markerDomEl.style.backgroundImage);
+  return new mapbox.Marker(markerDomEl).setLngLat(coords);
 };
-
-// const markerDomEl = document.createElement("div"); // Create a new, detached DIV
-// markerDomEl.style.width = "32px";
-// markerDomEl.style.height = "39px";
-// markerDomEl.style.backgroundImage = "url(http://i.imgur.com/WbMOfMl.png)";
-//
-// new mapboxgl.Marker(markerDomEl).setLngLat([-74.009, 40.705]).addTo(map);
 
 module.exports = buildMarker;

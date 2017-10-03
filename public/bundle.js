@@ -535,6 +535,9 @@ module.exports={"$version":8,"$root":{"version":{"required":true,"type":"enum","
 /***/ (function(module, exports, __webpack_require__) {
 
 const mapboxgl = __webpack_require__(0);
+const buildMarker = __webpack_require__(3);
+
+
 
 mapboxgl.accessToken = "pk.eyJ1IjoicGluZ3dpbnpsb3R5IiwiYSI6ImNqOGJ0NGF4ejAxcnQyd29razNnM29ncDYifQ.9hm_D0gtkCHlJSEm6rkomg";
 
@@ -542,8 +545,17 @@ const map = new mapboxgl.Map({
   container: "map",
   center: [-74.009, 40.705], // FullStack coordinates
   zoom: 12, // starting zoom
-  style: "mapbox://styles/mapbox/streets-v10" // mapbox has lots of different map styles available.
+  style: "mapbox://styles/mapbox/light-v9" // mapbox has lots of different map styles available.
 });
+
+const marker = buildMarker("activities", [-74.009351, 40.705086]);
+marker.addTo(map);
+
+const hotel = buildMarker('hotels', [-74.009352, 40.708019]);
+hotel.addTo(map);
+
+const restaurant = buildMarker('restaurants', [-74.008151, 40.705076]);
+restaurant.addTo(map);
 
 
 /***/ }),
@@ -571,6 +583,30 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const mapbox = __webpack_require__(0);
+
+const iconURLs = {
+  activities: "http://i.imgur.com/WbMOfMl.png",
+  hotels: "http://i.imgur.com/D9574Cu.png",
+  restaurants: "http://i.imgur.com/cqR6pUI.png"
+}
+
+const buildMarker = (type, coords) => {
+  const markerDomEl = document.createElement("div");
+  markerDomEl.style.width = "32px";
+  markerDomEl.style.height = "39px";
+  markerDomEl.style.backgroundImage = `url(${iconURLs[type]})`;
+  console.log(markerDomEl.style.backgroundImage);
+  return new mapbox.Marker(markerDomEl).setLngLat(coords);
+};
+
+module.exports = buildMarker;
 
 
 /***/ })
